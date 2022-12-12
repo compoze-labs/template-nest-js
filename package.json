@@ -5,9 +5,16 @@
     "author": "",
     "private": true,
     "license": "UNLICENSED",
+    "config": {
+        "projectName": "template-nest-js",
+        "region": "us-east-1",
+        "imageTag": "latest"
+    },
     "scripts": {
         "prebuild": "rimraf dist",
-        "build": "nest build",
+        "build": "./scripts/build_tag.sh $npm_package_config_projectName $npm_package_config_imageTag",
+        "build:app": "nest build",
+        "deploy": "./scripts/deploy.sh $npm_package_config_projectName $npm_package_config_imageTag $npm_package_config_region",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
         "start": "node main.js",
         "start:local": "nest start",
@@ -15,6 +22,7 @@
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",
         "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+        "login": "./scripts/login.sh",
         "test": "jest",
         "test:watch": "jest --watch",
         "test:cov": "jest --coverage",
