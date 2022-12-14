@@ -8,6 +8,6 @@ restart() {
     STAGE=$2
     echo "creating deployment for ${SERVICE}-${STAGE}"
 
-    aws ecs update-service --cluster ${SERVICE}-${STAGE} --service ${SERVICE} --force-new-deployment
+    aws ecs update-service --cluster ${SERVICE}-${STAGE} --service ${SERVICE}-${STAGE} --force-new-deployment
     
 }

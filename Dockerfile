@@ -9,13 +9,14 @@ ENV PORT $PORT
 EXPOSE $PORT 9229 9230
 
 RUN npm i npm@8.15.0 -g
+RUN npm i pnpm@7.18.2 -g
 
 RUN mkdir /opt/node_app && chown node:node /opt/node_app
 WORKDIR /opt/node_app
 
 USER node
 COPY --chown=node:node package.json package-lock.json* ./
-RUN npm install --no-optional && npm cache clean --force
+RUN pnpm install --no-optional
 ENV PATH /opt/node_app/node_modules/.bin:$PATH
 
 HEALTHCHECK --interval=30s CMD node healthcheck.js

@@ -7,7 +7,7 @@
     "license": "UNLICENSED",
     "config": {
         "projectName": "template-nest-js",
-        "region": "us-east-1",
+        "region": "<region>",
         "imageTag": "latest"
     },
     "scripts": {
