@@ -3,7 +3,7 @@ var http = require("http");
 var options = {
     timeout: 2000,
     host: 'localhost',
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 5000,
     path: '/health' // must be the same as HEALTHCHECK in Dockerfile
 };
 
