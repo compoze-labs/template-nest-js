@@ -15,7 +15,7 @@ RUN mkdir /opt/node_app && chown node:node /opt/node_app
 WORKDIR /opt/node_app
 
 USER node
-COPY --chown=node:node package.json package-lock.json* ./
+COPY --chown=node:node package.json pnpm-lock.yaml* ./
 RUN pnpm install --no-optional
 ENV PATH /opt/node_app/node_modules/.bin:$PATH
 
