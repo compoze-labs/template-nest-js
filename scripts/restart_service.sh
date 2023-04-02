@@ -6,12 +6,12 @@ restart() {
     
     SERVICE=$1
     STAGE=$2
-    echo "creating deployment for ${SERVICE}-${STAGE}"
+    echo "creating deployment for ${ECS_CLUSTER_NAME}"
     
     
-    output=$(aws ecs update-service --cluster ${SERVICE}-${STAGE} --service ${SERVICE}-${STAGE} --force-new-deployment 2>&1)
+    output=$(aws ecs update-service --cluster ${ECS_CLUSTER_NAME} --service ${ECS_SERVICE_NAME} --force-new-deployment 2>&1)
     echo "${output}" | jq ".service.taskDefinition"
     
     echo "waiting for deployment to become stable"
-    aws ecs wait services-stable --cluster "${SERVICE}-${STAGE}" --service "${SERVICE}-${STAGE}"
+    aws ecs wait services-stable --cluster ${ECS_CLUSTER_NAME} --service "${ECS_SERVICE_NAME}"
 }

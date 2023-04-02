@@ -11,7 +11,7 @@ push() {
     ENV=$5
 
     IMAGE="${CONTAINER}:${TAG}"
-    REPOSITORY="${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${CONTAINER}-${ENV}:${TAG}"
+    REPOSITORY="${ECR_REPOSITORY_URL}:${TAG}"
 
     echo "retagging image ${IMAGE} for registry ${REPOSITORY}"
     docker tag "${IMAGE}" "${REPOSITORY}"
